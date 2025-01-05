@@ -8,6 +8,12 @@ Test on other devices
 
 We should target 60fps experience at least.
 
+# Tips and tricks
+
+very good source that you should study
+
+<https://discoverthreejs.com/tips-and-tricks/>
+
 ## Limitations
 
 - CPU
