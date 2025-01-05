@@ -497,13 +497,14 @@ if (canvas) {
   // good for performances
   /*
   const geo = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  
+  const mat = new THREE.MeshNormalMaterial(); // we also mutualized materials
 
   for (let index = 0; index < 50; index++) {
     // bad for performances
     // too many geometries
     // const geo = new THREE.BoxGeometry(0.5, 0.5, 0.5);
 
-    const mat = new THREE.MeshNormalMaterial();
 
     const mesh = new THREE.Mesh(geo, mat);
 
@@ -521,7 +522,7 @@ if (canvas) {
   // - merge geometries
 
   // we have array with all geometries
-  const geometries: THREE.BoxGeometry[] = [];
+  /* const geometries: THREE.BoxGeometry[] = [];
   for (let index = 0; index < 50; index++) {
     const geo = new THREE.BoxGeometry(0.5, 0.5, 0.5);
 
@@ -546,4 +547,12 @@ if (canvas) {
 
   scene.add(mesh);
   // now you can do spector test and you will see that amout of draw calles i lowered
+   */
+
+  // ----- MATERIALS
+  // - mutualize materials just like you did for geometries
+  //   resuse same material for many meshes (I did this in example before previous one)
+
+  // ----- MESHES
+  // - use InstancedMesh
 }

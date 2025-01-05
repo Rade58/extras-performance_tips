@@ -98,3 +98,15 @@ Unfortunately, it can be hard to generate and it's a lossy compression: <https:/
 - merge geometries
   we did this in blender easily but to lower drawCalls (which you test with Specter.js) when we load geometries in threejs
   you can use [BufferGeeometryUtils](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils)
+
+# Materials
+
+- you can mutualize materials
+- use cheap materials
+
+Some materials like MeshStandardMaterial or MeshPhysicalMaterial need more resources than materials such as MeshBasicMaterial, MeshLambertMaterial or MeshPhongMaterial
+Try to use the cheapest materials
+
+# Meshes
+
+- use InstancedMesh
