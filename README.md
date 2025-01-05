@@ -1,5 +1,11 @@
 # Extra workshops - Performance Tips
 
+Keep an eye on the performances from the start
+
+Don't finish project to test it after
+
+Test on other devices
+
 We should target 60fps experience at least.
 
 ## Limitations
