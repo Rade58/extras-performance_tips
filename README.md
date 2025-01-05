@@ -115,3 +115,68 @@ If you cannot merge the geometries because you need to have control over the mes
 
 It's like a mesh, but you create only one InstancedMesh, and provide a transformation matrix for each "instance" of that mesh
 The matrix has to be a [Matrix4](https://threejs.org/docs/?q=Matrix4#api/en/math/Matrix4), and you can apply any transformation by using the various available methods
+
+# Models
+
+- try to use low poly models, and if you need details use normal maps
+
+- use draco compression
+
+If the model has a lot of details with very complex geometries, use the Draco
+compression
+The drawbacks are a potential freeze when uncompressing the geometry, and you also have to load the Draco libraries
+
+- use gzip
+
+Gzip is a compression happening on the server side
+Most of the servers don't gzip files such as .glb, .gltf, .obj, etc.
+See if you can figure out how to fix that, depending on the server you are using
+
+I think this can be done with Nginx or apache (I'll look into if you can d othis with node.js for example)
+
+# Cameras
+
+- reduce field of view
+
+When objects are not in the field of view, they won't be rendered (frustum
+culling)
+That can seem like a tawdry solution, but you can just reduce the camera's field of view
+
+- reduce near and the far
+
+# Renderer
+
+- pixel ratio
+  dont just use default pixel ratio obtained with `window.devicePixelRatio`
+  use this:
+
+```ts
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+```
+
+# Power Preferences
+
+Some devices may be able to switch between different GPU or different GPU
+usage
+We can give a hint on what power is required when instantiating the WebGLRenderer by specifying a power Preference property
+
+```ts
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  // this means use best possible gpu of users computer
+  powerPreference: "high-performance",
+});
+```
+
+# Antialias
+
+The default antialias is performant, but less performant than no antialias
+Only add it if you have visible aliasing and no performance issue
+
+# Post Processing
+
+- limit passes
+
+Each post-processing pass will take as many pixels as the render's resolution (including the pixel ratio) to render
+If you have a `1920x1080` resolution with 4 passes and a pixel ratio of `2`, that makes `1920 _ 2 _ 1880 _ 2 _ 4 = 33 177 600` pixels to render Try to regroup your custom passes into one

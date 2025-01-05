@@ -561,8 +561,11 @@ if (canvas) {
   const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
   const material = new THREE.MeshNormalMaterial();
   const mesh = new THREE.InstancedMesh(geometry, material, 50);
+  // if you want to be able to change matrces
+  // you must set this
+  mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 
-  console.log(mesh.count);
+  // console.log(mesh.count);
 
   scene.add(mesh);
 
