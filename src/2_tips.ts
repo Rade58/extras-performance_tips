@@ -554,5 +554,43 @@ if (canvas) {
   //   resuse same material for many meshes (I did this in example before previous one)
 
   // ----- MESHES
-  // - use InstancedMesh
+  // - use InstancedMesh (go to README to see what this is)
+  // example (when you need to have just one mesh but you
+  // still need to have access to the meshe independantly)
+
+  const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  const material = new THREE.MeshNormalMaterial();
+  const mesh = new THREE.InstancedMesh(geometry, material, 50);
+
+  console.log(mesh.count);
+
+  scene.add(mesh);
+
+  for (let index = 0; index < mesh.count; index++) {
+    const position = new THREE.Vector3(
+      (Math.random() - 0.5) * 10,
+      (Math.random() - 0.5) * 10,
+      (Math.random() - 0.5) * 10
+    );
+
+    const quaterniaon = new THREE.Quaternion();
+
+    quaterniaon.setFromEuler(
+      new THREE.Euler(
+        (Math.random() - 0.5) * Math.PI * 2,
+        (Math.random() - 0.5) * Math.PI * 2,
+        0
+      )
+    );
+
+    const matrix = new THREE.Matrix4();
+
+    matrix.makeRotationFromQuaternion(quaterniaon);
+
+    matrix.setPosition(position);
+
+    mesh.setMatrixAt(index, matrix);
+  }
+
+  // Test this above with Specter.js
 }

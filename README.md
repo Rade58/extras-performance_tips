@@ -109,4 +109,9 @@ Try to use the cheapest materials
 
 # Meshes
 
-- use InstancedMesh
+- use `InstancedMesh`
+
+If you cannot merge the geometries because you need to have control over the meshes independently, but they are using the same geometry and same material, you can use an [`InstancedMesh`](https://threejs.org/docs/#api/en/objects/InstancedMesh)
+
+It's like a mesh, but you create only one InstancedMesh, and provide a transformation matrix for each "instance" of that mesh
+The matrix has to be a [Matrix4](https://threejs.org/docs/?q=Matrix4#api/en/math/Matrix4), and you can apply any transformation by using the various available methods
