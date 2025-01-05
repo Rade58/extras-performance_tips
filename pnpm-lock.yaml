@@ -11,10 +11,16 @@ importers:
       lil-gui:
         specifier: ^0.20.0
         version: 0.20.0
+      stats.js:
+        specifier: ^0.17.0
+        version: 0.17.0
       three:
         specifier: ^0.172.0
         version: 0.172.0
     devDependencies:
+      '@types/stats.js':
+        specifier: ^0.17.3
+        version: 0.17.3
       '@types/three':
         specifier: ^0.171.0
         version: 0.171.0
@@ -537,6 +543,9 @@ packages:
 
   static-eval@2.1.1:
     resolution: {integrity: sha512-MgWpQ/ZjGieSVB3eOJVs4OA2LT/q1vx98KPCTTQPzq/aLr0YUXTsgryTXr4SLfR0ZfUUCiedM9n/ABeDIyy4mA==}
+
+  stats.js@0.17.0:
+    resolution: {integrity: sha512-hNKz8phvYLPEcRkeG1rsGmV5ChMjKDAWU7/OJJdDErPBNChQXxCo3WZurGpnWc6gZhAzEPFad1aVgyOANH1sMw==}
 
   stream-shift@1.0.3:
     resolution: {integrity: sha512-76ORR0DO1o1hlKwTbi/DM3EXWGf3ZJYO8cXX5RJwnul2DEg2oyoZyjLNoQM8WsvZiFKCRfC1O0J7iCvie3RZmQ==}
@@ -1088,6 +1097,8 @@ snapshots:
   static-eval@2.1.1:
     dependencies:
       escodegen: 2.1.0
+
+  stats.js@0.17.0: {}
 
   stream-shift@1.0.3: {}
 
