@@ -180,3 +180,32 @@ Only add it if you have visible aliasing and no performance issue
 
 Each post-processing pass will take as many pixels as the render's resolution (including the pixel ratio) to render
 If you have a `1920x1080` resolution with 4 passes and a pixel ratio of `2`, that makes `1920 _ 2 _ 1880 _ 2 _ 4 = 33 177 600` pixels to render Try to regroup your custom passes into one
+
+# Shaders
+
+- specify the precision of floating point numbers
+
+```ts
+const shaderMaterial = new THREE.ShaderMaterial({
+  precision: "lowp",
+});
+```
+
+Test if everything will look good on low precision, and use it if you don't have glitches or any quality downgrades
+
+- keep code simple
+
+avoid if statements
+
+make good use of swizzles (.xy, .xyz ...) and use built-in functions
+
+- use textures with shaders
+
+- use defines, like define for PI
+
+you can also set defines from javascript onto ShaderMaterial, just like you did with uniforms
+
+just don't try to change them because material will be recompiled, rember they are not uniforms
+
+- do the calculations in vertex shader (not in javascript)
+  and if fragment needs the results, send them with varyings
